@@ -1,0 +1,71 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <div class="container" style="background-color: white;">
+            <form action="/show" method="POST">
+                <div class="row mb-3 mt-3">
+                    <label for="timestamp" class="col-sm-2 col-form-label">Timestamp</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="timestamp" name="details[timestamp]" value="">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="symbol" class="col-sm-2 col-form-label">Symbol</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="symbol" name="details[symbol]" value="">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mb-3">Filter</button>
+            </form>
+        </div>
+        <div class="container-fluid mt-5 mb-5" style="background-color: white;">
+            <table class="table display" id="myTable" style="width:100%">
+                <thead class="thead">
+                    <tr>
+                        <th scope="col">TIMESTAMP</th>
+                        <th scope="col">INSTRUMENT</th>
+                        <th scope="col">SYMBOL</th>
+                        <th scope="col">OPEN</th>
+                        <th scope="col">HIGH</th>
+                        <th scope="col">LOW</th>
+                        <th scope="col">CLOSE</th>
+                        <th scope="col">COI</th>
+                        <th scope="col">PCR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let row of output_file.reverse()){ %>
+                        <tr>
+                            <td>
+                                <%= row.TIMESTAMP %>
+                            </td>
+                            <td>
+                                <%= row.INSTRUMENT %>
+                            </td>
+                            <td>
+                                <%= row.SYMBOL %>
+                            </td>
+                            <td>
+                                <%= row.OPEN %>
+                            </td>
+                            <td>
+                                <%= row.HIGH %>
+                            </td>
+                            <td>
+                                <%= row.LOW %>
+                            </td>
+                            <td>
+                                <%= row.CLOSE %>
+                            </td>
+                            <td>
+                                <%= row.COI %>
+                            </td>
+                            <td>
+                                <%= row.PCR %>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <% //src=" ./javascripts/filter_table.js" %>

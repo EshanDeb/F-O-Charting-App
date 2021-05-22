@@ -1,0 +1,30 @@
+<% layout('layouts/boilerplate') %>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <form action="/chart" method="GET">
+                    <label for="symbolInput" class="form-label"><span class="text-white">Enter the
+                            symbol:</span></label>
+                    <input id="symbolInput" class="form-control mb-3" type="text" name="symbol"
+                        value="<%= symbol.toUpperCase() %>">
+                </form>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <h1>
+                    <span class="text-white fs-5">
+                        Showing for:
+                    </span>
+                    <span class="text-white">
+                        <%= symbol %>
+                    </span>
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn btn-success" onclick="plotChart('<%= JSON.stringify(data) %>')">Get
+                Chart</button>
+        </div>
+    </div>
+    <div id="tvchart" class="mt-4 mb-4 ml-0"></div>
+    <script src="./javascripts/charting.js"></script>
+    <script src="https://unpkg.com/lightweight-charts@2.0.0/dist/lightweight-charts.standalone.production.js"></script>

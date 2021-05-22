@@ -1,0 +1,23 @@
+<% layout('layouts/boilerplate') %>
+    <div class="container-fluid row">
+        <section class="col-md-6">
+            <form action="/home" method="GET">
+                <input id="dateInput" class="form-control mb-3" type="date" name="date">
+                <button class="btn btn-success">Click to get download links</button>
+            </form>
+        </section>
+        <section class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body bg-secondary">
+                    <% for(let i=0;i<dates.length;i++){ %>
+                        <a id="download-links" href="<%=dates[i].url %>" class="btn btn-danger me-2 mt-2"
+                            type="application/zip" onclick="compute('<%= dates[i].iso_day %>')">
+                            <%= dates[i].iso_day %>
+                        </a>
+                        <% } %>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="./javascripts/downloadBhavcopies.js"></script>
